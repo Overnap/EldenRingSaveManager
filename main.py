@@ -32,7 +32,7 @@ def read_info():
         file = open(INFO_LIST_PATH, "r", encoding="utf8")
 
         for line in file.readlines():
-            line = line.split("\t")
+            line = line[:-1].split("\t")
             info_list.append(SaveInfo(line[0], line[1], line[2]))
 
         file.close()
