@@ -156,7 +156,15 @@ class Window(QtWidgets.QWidget):
 
     def load_save(self):
         if self.selectedInfo:
-            shutil.copy2(INFO_PATH + self.selectedInfo.uid, SAVE_PATH)
+            q = QtWidgets.QMessageBox.question(self,
+                                               "Load",
+                                               "Do you really want to load the save?\n" +
+                                               "\"" + self.selectedInfo.name + "\"",
+                                               QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                               QtWidgets.QMessageBox.No)
+            if q == QtWidgets.QMessageBox.Yes:
+                shutil.copy2(INFO_PATH + self.selectedInfo.uid, SAVE_PATH)
+                QtWidgets.QMessageBox.information(self, "Load", "Success")
 
     def remove_save(self):
         if self.selectedInfo:
