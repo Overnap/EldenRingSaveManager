@@ -155,13 +155,20 @@ class Window(QtWidgets.QWidget):
 
     def remove_save(self):
         if self.selectedInfo:
-            self.saveListWidget.takeItem(self.saveListWidget.currentRow())
-            self.dateLabel.setText(translate(""))
+            q = QtWidgets.QMessageBox.warning(self,
+                                              "Remove",
+                                              "Do you really want to remove the save?\n" +
+                                              "\"" + self.selectedInfo.name + "\"",
+                                              QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                              QtWidgets.QMessageBox.No)
+            if q == QtWidgets.QMessageBox.Yes:
+                self.saveListWidget.takeItem(self.saveListWidget.currentRow())
+                self.dateLabel.setText(translate(""))
 
-            info_list.remove(self.selectedInfo)
-            rewrite_info()
+                info_list.remove(self.selectedInfo)
+                rewrite_info()
 
-            self.selectedInfo = None
+                self.selectedInfo = None
 
 
 if __name__ == "__main__":
