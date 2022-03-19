@@ -71,6 +71,11 @@ def str_to_info(str_item):
     raise Exception("sync problem")
 
 
+def resource_path(relative_path):
+    base_path = getattr(sys, '_MEIPASS', os.getcwd())
+    return os.path.join(base_path, relative_path)
+
+
 class Window(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
@@ -84,7 +89,7 @@ class Window(QtWidgets.QWidget):
 
     def setup_ui(self):
         self.setObjectName("Form")
-        self.setWindowIcon(QtGui.QIcon("icon.png"))
+        self.setWindowIcon(QtGui.QIcon(resource_path("icon.ico")))
         self.resize(400, 300)
 
         # Create widgets
