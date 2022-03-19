@@ -172,6 +172,7 @@ class Window(QtWidgets.QWidget):
 
                 info_list.remove(self.selectedInfo)
                 rewrite_info()
+                os.remove(INFO_PATH + self.selectedInfo.uid)
 
                 self.selectedInfo = None
 
