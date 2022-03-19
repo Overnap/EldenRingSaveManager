@@ -78,6 +78,10 @@ class Window(QtWidgets.QWidget):
         self.center_window()
         self.selectedInfo = None
 
+        # List the stored info
+        for info in info_list:
+            self.saveListWidget.addItem(info_to_str(info))
+
     def setup_ui(self):
         self.setObjectName("Form")
         self.setWindowIcon(QtGui.QIcon("icon.png"))
@@ -130,7 +134,7 @@ class Window(QtWidgets.QWidget):
         date = datetime.datetime.now().strftime("%y-%m-%d %H:%M:%S")
         name = self.saveNameEdit.text()
         if not name:
-            name = date
+            name = date  # Save as time if no name is given
         else:
             self.saveNameEdit.setText(translate(""))
 
