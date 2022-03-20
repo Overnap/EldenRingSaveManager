@@ -90,12 +90,13 @@ class Window(QtWidgets.QWidget):
     def setup_ui(self):
         self.setObjectName("Form")
         self.setWindowIcon(QtGui.QIcon(resource_path("icon.ico")))
-        self.resize(400, 300)
+        self.setFixedSize(400, 300)
 
         # Create widgets
         self.saveNameEdit = QtWidgets.QLineEdit(self)
         self.saveNameEdit.setGeometry(QtCore.QRect(20, 20, 251, 31))
         self.saveNameEdit.setObjectName("saveNameEdit")
+        self.saveNameEdit.setPlaceholderText("Enter a save name for identification")
 
         self.createButton = QtWidgets.QPushButton(self)
         self.createButton.setGeometry(QtCore.QRect(290, 20, 91, 31))
